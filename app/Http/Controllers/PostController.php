@@ -43,3 +43,4 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
 }
+}
