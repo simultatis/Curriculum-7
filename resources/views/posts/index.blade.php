@@ -8,21 +8,23 @@
     </head>
     <body>
         <h1>Blog Name</h1>
+        <p class='create'>[<a href='/posts/create'>create</a>]</p>
+        @foreach ($posts as $post)
        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
             @csrf
             @method('DELETE')
-            <button type="submit">delete</button>
-            <p class='create'>[<a href='/posts/create'>create</a>]</p>
+            <button type="submit" id="btn">delete</button>
+            <p id="txt"></p>
+            <script src="./js/Curriculum8-6.js"></script>
             <div class='posts'>
-                @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
-                 @endforeach
             </div>
+        @endforeach
         </form>
         <div class='paginate'>
             {{ $posts->links() }}
